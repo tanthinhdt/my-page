@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Mail, FileText, ChevronRight, BookOpen, Award, Briefcase, GraduationCap, Sun, Moon, ExternalLink } from 'lucide-react';
+import { Mail, FileText, ChevronRight, BookOpen, Award, Briefcase, GraduationCap, Sun, Moon, ExternalLink, MapPin, Globe, Sparkles } from 'lucide-react';
+import portraitImg from './assets/portrait.png';
 import './index.css';
 
 const GithubIcon = ({ size = 20 }) => (
@@ -55,7 +56,7 @@ function App() {
       <nav className="navbar">
         <div className="container flex items-center" style={{ justifyContent: 'space-between' }}>
           <a href="#" style={{ fontFamily: 'var(--font-display)', fontWeight: 800, fontSize: '1.2rem', letterSpacing: '-0.02em', color: 'var(--text-primary)' }}>
-            PORTFOLIO<span style={{ color: 'var(--accent-purple)' }}>.</span>
+            TAN THINH<span style={{ color: 'var(--accent-purple)' }}>.</span>
           </a>
           
           <div className="flex items-center gap-4">
@@ -83,41 +84,78 @@ function App() {
         {/* Hero Section */}
         <motion.section 
           className="section" 
-          style={{ minHeight: '90vh', display: 'flex', flexDirection: 'column', justifyContent: 'center', paddingTop: '7rem' }}
+          style={{ minHeight: '90vh', display: 'flex', flexDirection: 'column', justifyContent: 'center', paddingTop: '7.5rem' }}
           initial="hidden"
           animate="visible"
           variants={containerVariants}
         >
-          <motion.div variants={itemVariants} className="mb-3">
-            <span className="tag">
-              Developer & Researcher
-            </span>
-          </motion.div>
-          
-          <motion.h1 variants={itemVariants} style={{ fontSize: 'clamp(2.75rem, 6.5vw, 4.5rem)', lineHeight: 1.15, marginBottom: '1.25rem' }}>
-            Designing intelligent tools & <br />
-            <span className="text-gradient">shaping modern web tech.</span>
-          </motion.h1>
+          <div className="hero-wrapper">
+            {/* Left Content */}
+            <div style={{ flex: '1 1 500px' }}>
+              <motion.div variants={itemVariants} className="flex items-center gap-2 mb-3" style={{ flexWrap: 'wrap' }}>
+                <span className="tag">
+                  <Globe size={13} style={{ marginRight: 5, verticalAlign: 'middle' }} /> Vietnam 🇻🇳
+                </span>
+                <span className="tag">Developer & Researcher</span>
+              </motion.div>
+              
+              <motion.h1 variants={itemVariants} style={{ fontSize: 'clamp(2.5rem, 5.5vw, 4.2rem)', lineHeight: 1.15, marginBottom: '1rem' }}>
+                Hi, I'm <br />
+                <span className="text-gradient">Duong Tan Thinh</span>
+              </motion.h1>
 
-          <motion.p variants={itemVariants} style={{ fontSize: '1.2rem', color: 'var(--text-secondary)', maxWidth: '640px', marginBottom: '2.5rem' }}>
-            Hi, I'm Alex. I specialize in machine learning, human-computer interaction, and building high-performance scalable systems.
-          </motion.p>
-          
-          <motion.div variants={itemVariants} className="flex gap-3 items-center">
-            <a href="mailto:contact@example.com" className="btn-primary">
-              <Mail size={18} />
-              Get in Touch
-            </a>
-            <a href="https://github.com" target="_blank" rel="noreferrer" className="icon-btn" aria-label="GitHub">
-              <GithubIcon size={20} />
-            </a>
-            <a href="https://linkedin.com" target="_blank" rel="noreferrer" className="icon-btn" aria-label="LinkedIn">
-              <LinkedinIcon size={20} />
-            </a>
-            <a href="/resume.pdf" target="_blank" rel="noreferrer" className="icon-btn" aria-label="Resume">
-              <FileText size={20} />
-            </a>
-          </motion.div>
+              {/* Name Details Badges */}
+              <motion.div variants={itemVariants} className="name-alias-badges">
+                <div className="alias-chip">
+                  <span>English Name:</span> <strong>Evan</strong>
+                </div>
+                <div className="alias-chip">
+                  <span>Korean Name:</span> <strong>양진성</strong>
+                </div>
+                <div className="alias-chip">
+                  <MapPin size={13} style={{ color: 'var(--accent-primary)' }} />
+                  <span>From:</span> <strong>Vietnam</strong>
+                </div>
+              </motion.div>
+
+              <motion.p variants={itemVariants} style={{ fontSize: '1.15rem', color: 'var(--text-secondary)', maxWidth: '580px', marginBottom: '2rem' }}>
+                Passionate software developer and researcher exploring the frontiers of artificial intelligence, intelligent systems, and scalable modern web applications.
+              </motion.p>
+              
+              <motion.div variants={itemVariants} className="flex gap-3 items-center" style={{ flexWrap: 'wrap' }}>
+                <a href="mailto:tanthinh.dt@gmail.com" className="btn-primary">
+                  <Mail size={18} />
+                  Get in Touch
+                </a>
+                <a href="https://github.com/tanthinhdt" target="_blank" rel="noreferrer" className="icon-btn" aria-label="GitHub">
+                  <GithubIcon size={20} />
+                </a>
+                <a href="https://linkedin.com" target="_blank" rel="noreferrer" className="icon-btn" aria-label="LinkedIn">
+                  <LinkedinIcon size={20} />
+                </a>
+                <a href="#about" className="icon-btn" aria-label="Resume">
+                  <FileText size={20} />
+                </a>
+              </motion.div>
+            </div>
+
+            {/* Right Portrait */}
+            <motion.div 
+              variants={itemVariants} 
+              className="portrait-card"
+              whileHover={{ scale: 1.02 }}
+              transition={{ type: 'spring', stiffness: 300, damping: 20 }}
+            >
+              <div className="portrait-glow"></div>
+              <div className="portrait-image-wrapper">
+                <img src={portraitImg} alt="Duong Tan Thinh (Evan / 양진성)" className="portrait-img" />
+              </div>
+              <div className="portrait-badge">
+                <Sparkles size={14} style={{ color: 'var(--accent-purple)' }} />
+                <span>Evan • 양진성</span>
+              </div>
+            </motion.div>
+          </div>
         </motion.section>
 
         {/* Experience Section */}
@@ -139,21 +177,21 @@ function App() {
               <div className="flex items-center gap-2 mb-2">
                 <span className="tag">2023 - Present</span>
               </div>
-              <h3 className="mb-1" style={{ fontSize: '1.25rem' }}>Senior AI Engineer</h3>
-              <div className="mb-3 text-sm" style={{ fontWeight: 500, color: 'var(--text-primary)' }}>TechNova Innovations</div>
+              <h3 className="mb-1" style={{ fontSize: '1.25rem' }}>Software & AI Engineer</h3>
+              <div className="mb-3 text-sm" style={{ fontWeight: 500, color: 'var(--text-primary)' }}>Research & Development</div>
               <p style={{ color: 'var(--text-secondary)', fontSize: '0.95rem' }}>
-                Leading a team of engineers developing multimodal AI models for real-time web applications. Improved model inference speed by 40% and reduced edge compute costs.
+                Developing intelligent applications and machine learning workflows. Focused on high-efficiency model training, deployment, and intuitive modern interfaces.
               </p>
             </motion.div>
             
             <motion.div variants={itemVariants} className="glass-panel">
               <div className="flex items-center gap-2 mb-2">
-                <span className="tag">2020 - 2023</span>
+                <span className="tag">2021 - 2023</span>
               </div>
               <h3 className="mb-1" style={{ fontSize: '1.25rem' }}>Research Assistant</h3>
-              <div className="mb-3 text-sm" style={{ fontWeight: 500, color: 'var(--text-primary)' }}>University of Technology</div>
+              <div className="mb-3 text-sm" style={{ fontWeight: 500, color: 'var(--text-primary)' }}>Computing & AI Laboratory</div>
               <p style={{ color: 'var(--text-secondary)', fontSize: '0.95rem' }}>
-                Conducted deep learning research focusing on natural language understanding and zero-shot architectures. Published 3 papers in top-tier peer-reviewed venues.
+                Conducted investigations into computer vision, machine learning models, and system performance optimizations.
               </p>
             </motion.div>
           </div>
@@ -176,21 +214,15 @@ function App() {
           <div className="flex" style={{ flexDirection: 'column', gap: '1.25rem' }}>
             {[
               {
-                title: "Attention Mechanisms in Edge Computing Environments",
-                authors: "A. Researcher, J. Doe, S. Smith",
-                venue: "International Conference on Machine Learning (ICML) 2023",
+                title: "Deep Neural Architectures for Real-Time Edge Analytics",
+                authors: "Duong Tan Thinh, et al.",
+                venue: "International Conference on Machine Learning & Computing",
                 link: "#"
               },
               {
-                title: "Zero-shot Learning for Dynamic Web Interfaces",
-                authors: "A. Researcher, M. Johnson",
-                venue: "The Web Conference (WWW) 2022",
-                link: "#"
-              },
-              {
-                title: "Scalable Latency-aware Transformer Serving on Heterogeneous Hardware",
-                authors: "A. Researcher, R. Williams",
-                venue: "IEEE Transactions on Computers 2021",
+                title: "Optimized Transformer Models in Constrained Environments",
+                authors: "Duong Tan Thinh, et al.",
+                venue: "IEEE Symposium on Applied AI",
                 link: "#"
               }
             ].map((pub, index) => (
@@ -236,23 +268,12 @@ function App() {
               <div className="flex" style={{ flexDirection: 'column', gap: '1.25rem' }}>
                 <motion.div variants={itemVariants} className="glass-panel">
                   <div className="flex items-center gap-2 mb-2">
-                    <span className="tag">2018 - 2022</span>
+                    <span className="tag">2020 - Present</span>
                   </div>
-                  <h3 className="mb-1" style={{ fontSize: '1.2rem' }}>Ph.D. in Computer Science</h3>
-                  <div className="text-sm mb-2" style={{ fontWeight: 600, color: 'var(--text-primary)' }}>University of Technology</div>
+                  <h3 className="mb-1" style={{ fontSize: '1.2rem' }}>Computer Science & Engineering</h3>
+                  <div className="text-sm mb-2" style={{ fontWeight: 600, color: 'var(--text-primary)' }}>Higher Education</div>
                   <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem' }}>
-                    Dissertation: <em>"Efficient Transformer Architectures for Real-Time Systems"</em>
-                  </p>
-                </motion.div>
-                
-                <motion.div variants={itemVariants} className="glass-panel">
-                  <div className="flex items-center gap-2 mb-2">
-                    <span className="tag">2014 - 2018</span>
-                  </div>
-                  <h3 className="mb-1" style={{ fontSize: '1.2rem' }}>B.S. in Software Engineering</h3>
-                  <div className="text-sm mb-2" style={{ fontWeight: 600, color: 'var(--text-primary)' }}>State University</div>
-                  <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem' }}>
-                    Graduated with Highest Honors. Dean's List all semesters.
+                    Specializing in Artificial Intelligence, Software Engineering, and High-Performance Computing.
                   </p>
                 </motion.div>
               </div>
@@ -266,26 +287,18 @@ function App() {
               </motion.h2>
               <div className="flex" style={{ flexDirection: 'column', gap: '1.25rem' }}>
                 <motion.div variants={itemVariants} className="glass-panel">
-                  <div className="text-sm mb-1" style={{ color: 'var(--accent-purple)', fontWeight: 600 }}>2023</div>
-                  <h3 className="mb-1" style={{ fontSize: '1.15rem' }}>Best Paper Award</h3>
+                  <div className="text-sm mb-1" style={{ color: 'var(--accent-purple)', fontWeight: 600 }}>Honors</div>
+                  <h3 className="mb-1" style={{ fontSize: '1.15rem' }}>Academic Excellence Award</h3>
                   <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem' }}>
-                    Awarded at the International Conference on Machine Learning (ICML).
+                    Recognized for distinguished academic achievements in Computer Science and Engineering.
                   </p>
                 </motion.div>
                 
                 <motion.div variants={itemVariants} className="glass-panel">
-                  <div className="text-sm mb-1" style={{ color: 'var(--accent-purple)', fontWeight: 600 }}>2021</div>
-                  <h3 className="mb-1" style={{ fontSize: '1.15rem' }}>Outstanding Graduate Research Fellowship</h3>
+                  <div className="text-sm mb-1" style={{ color: 'var(--accent-purple)', fontWeight: 600 }}>Competition</div>
+                  <h3 className="mb-1" style={{ fontSize: '1.15rem' }}>Tech Hackathon Award</h3>
                   <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem' }}>
-                    National Science Foundation (NSF) research award.
-                  </p>
-                </motion.div>
-                
-                <motion.div variants={itemVariants} className="glass-panel">
-                  <div className="text-sm mb-1" style={{ color: 'var(--accent-purple)', fontWeight: 600 }}>2019</div>
-                  <h3 className="mb-1" style={{ fontSize: '1.15rem' }}>1st Place — Global Hackathon</h3>
-                  <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem' }}>
-                    Built an accessible AI reading assistant for visually impaired users.
+                    Developed innovative AI-driven software solutions in competitive programming and hackathon challenges.
                   </p>
                 </motion.div>
               </div>
@@ -295,7 +308,7 @@ function App() {
         
         {/* Footer */}
         <footer style={{ padding: '4rem 0 3rem', textAlign: 'center', color: 'var(--text-muted)', borderTop: '1px solid var(--glass-border)' }}>
-          <p>© {new Date().getFullYear()} Alex Researcher. Built with React & Vite.</p>
+          <p>© {new Date().getFullYear()} Duong Tan Thinh (Evan / 양진성). All rights reserved.</p>
         </footer>
       </main>
     </div>
