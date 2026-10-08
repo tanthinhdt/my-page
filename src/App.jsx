@@ -215,7 +215,12 @@ function App() {
             {[
               {
                 title: "Vietnamese Automatic Speech Recognition Utilizing Audio and Visual Data",
-                authors: "Tan-Thinh Duong, Van-Minh Nguyen, Hong-Duyen-Khanh Pham, Thanh-Hai Le",
+                authors: [
+                  { name: "Tan-Thinh Duong", highlight: true },
+                  { name: "Van-Minh Nguyen", highlight: false },
+                  { name: "Hong-Duyen-Khanh Pham", highlight: false },
+                  { name: "Thanh-Hai Le", highlight: false }
+                ],
                 venue: "2025 International Conference on Multimedia Analysis and Pattern Recognition (MAPR)",
                 year: "2025",
                 type: "IEEE Conference",
@@ -224,7 +229,12 @@ function App() {
               },
               {
                 title: "Medicinal plant recognition based on Vision Transformer and BEiT",
-                authors: "Duy Tran Nguyen Nhut, Thinh Duong Tan, Trung Nguyen Quoc, Vinh Truong Hoang",
+                authors: [
+                  { name: "Duy Tran Nguyen Nhut", highlight: false },
+                  { name: "Thinh Duong Tan", highlight: true },
+                  { name: "Trung Nguyen Quoc", highlight: false },
+                  { name: "Vinh Truong Hoang", highlight: false }
+                ],
                 venue: "Procedia Computer Science, Vol. 234, pp. 188–195 (Elsevier)",
                 year: "2024",
                 type: "Elsevier Journal",
@@ -250,7 +260,20 @@ function App() {
                       {pub.title}
                     </a>
                   </h3>
-                  <div className="text-sm mb-1" style={{ color: 'var(--text-secondary)' }}>{pub.authors}</div>
+                  <div className="text-sm mb-1" style={{ color: 'var(--text-secondary)' }}>
+                    {pub.authors.map((author, i) => (
+                      <React.Fragment key={i}>
+                        {author.highlight ? (
+                          <strong style={{ color: 'var(--text-primary)', fontWeight: 700, textDecoration: 'underline', textUnderlineOffset: '3px', textDecorationColor: 'var(--accent-primary)' }}>
+                            {author.name}
+                          </strong>
+                        ) : (
+                          <span>{author.name}</span>
+                        )}
+                        {i < pub.authors.length - 1 && ', '}
+                      </React.Fragment>
+                    ))}
+                  </div>
                   <div className="text-sm" style={{ color: 'var(--accent-primary)', fontWeight: 500 }}>{pub.venue}</div>
                   <div className="text-sm mt-1" style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>DOI: {pub.doi}</div>
                 </div>
