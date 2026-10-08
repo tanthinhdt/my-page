@@ -214,16 +214,22 @@ function App() {
           <div className="flex" style={{ flexDirection: 'column', gap: '1.25rem' }}>
             {[
               {
-                title: "Deep Neural Architectures for Real-Time Edge Analytics",
-                authors: "Duong Tan Thinh, et al.",
-                venue: "International Conference on Machine Learning & Computing",
-                link: "#"
+                title: "Vietnamese Automatic Speech Recognition Utilizing Audio and Visual Data",
+                authors: "Tan-Thinh Duong, Van-Minh Nguyen, Hong-Duyen-Khanh Pham, Thanh-Hai Le",
+                venue: "2025 International Conference on Multimedia Analysis and Pattern Recognition (MAPR)",
+                year: "2025",
+                type: "IEEE Conference",
+                doi: "10.1109/MAPR67746.2025.11133884",
+                link: "https://ieeexplore.ieee.org/abstract/document/11133884/"
               },
               {
-                title: "Optimized Transformer Models in Constrained Environments",
-                authors: "Duong Tan Thinh, et al.",
-                venue: "IEEE Symposium on Applied AI",
-                link: "#"
+                title: "Medicinal plant recognition based on Vision Transformer and BEiT",
+                authors: "Duy Tran Nguyen Nhut, Thinh Duong Tan, Trung Nguyen Quoc, Vinh Truong Hoang",
+                venue: "Procedia Computer Science, Vol. 234, pp. 188–195 (Elsevier)",
+                year: "2024",
+                type: "Elsevier Journal",
+                doi: "10.1016/j.procs.2024.02.165",
+                link: "https://www.sciencedirect.com/science/article/pii/S187705092400351X"
               }
             ].map((pub, index) => (
               <motion.div 
@@ -232,18 +238,33 @@ function App() {
                 className="glass-panel" 
                 style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '1.5rem', flexWrap: 'wrap' }}
               >
-                <div style={{ flex: '1 1 300px' }}>
-                  <h3 className="mb-1" style={{ fontSize: '1.15rem' }}>{pub.title}</h3>
-                  <div className="text-sm mb-1">{pub.authors}</div>
+                <div style={{ flex: '1 1 340px' }}>
+                  <div className="flex items-center gap-2 mb-2" style={{ flexWrap: 'wrap' }}>
+                    <span className="tag">{pub.year}</span>
+                    <span className="tag" style={{ background: 'rgba(14, 165, 233, 0.08)', color: 'var(--accent-cyan)', borderColor: 'rgba(14, 165, 233, 0.2)' }}>
+                      {pub.type}
+                    </span>
+                  </div>
+                  <h3 className="mb-2" style={{ fontSize: '1.2rem', lineHeight: 1.4 }}>
+                    <a href={pub.link} target="_blank" rel="noopener noreferrer" style={{ color: 'var(--text-primary)' }}>
+                      {pub.title}
+                    </a>
+                  </h3>
+                  <div className="text-sm mb-1" style={{ color: 'var(--text-secondary)' }}>{pub.authors}</div>
                   <div className="text-sm" style={{ color: 'var(--accent-primary)', fontWeight: 500 }}>{pub.venue}</div>
+                  <div className="text-sm mt-1" style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>DOI: {pub.doi}</div>
                 </div>
-                <a 
-                  href={pub.link} 
-                  className="icon-btn" 
-                  style={{ width: 'auto', padding: '0.5rem 1rem', gap: '0.4rem', fontSize: '0.875rem', fontWeight: 500 }}
-                >
-                  Paper <ExternalLink size={15} />
-                </a>
+                <div className="flex gap-2">
+                  <a 
+                    href={pub.link} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="btn-primary" 
+                    style={{ padding: '0.6rem 1.2rem', fontSize: '0.875rem' }}
+                  >
+                    View Paper <ExternalLink size={15} />
+                  </a>
+                </div>
               </motion.div>
             ))}
           </div>
